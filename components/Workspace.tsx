@@ -1,9 +1,13 @@
 "use client";
 
+import Panel from "./Panel";
+
 const Workspace = () => {
   
   return (
-    <div>Wordspace</div>
+    <div>
+      <Panel />
+    </div>
   )
 }
 

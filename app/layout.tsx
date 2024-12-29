@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
+import { LedsProvider } from "@/utils/context/Leds";
+
 import Header from "@/components/Header";
 import Main from "@/components/Main";
 import Footer from "@/components/Footer";
@@ -25,7 +27,9 @@ export default function RootLayout({
       >
         <Header />
         <Main>
-          {children}
+          <LedsProvider>
+            {children}
+          </LedsProvider>
         </Main>
         <Footer />
         <Analytics />

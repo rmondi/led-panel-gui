@@ -1,0 +1,10 @@
+# Client
+NEXT_PUBLIC_COLS=10
+NEXT_PUBLIC_ROWS=10
+NEXT_PUBLIC_SERVER_URL="http://localhost:3000"
+
+# Server variables
+SERVER_PORT=3002
+ORIGIN="http://localhost:3001"
+ARDUINO_PATH="/dev/ttyUSB0"
+ARDUINO_BAUD_RATE=9600
