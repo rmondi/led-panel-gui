@@ -2,27 +2,14 @@
 
 import { useState, createContext } from "react";
 
-import { LedsType, SelectionType } from "../types";
-
-type LedsContextType = {
-  leds: LedsType;
-  setLeds: ( args0: LedsType ) => void;
-  selection: SelectionType;
-  setSelection: ( arg0: SelectionType ) => void;
-}
-
-const LedsContextDefault = {
-  leds: [],
-  setLeds: () => {},
-  selection: [],
-  setSelection: () => {}
-}
+import {
+  LedsType,
+  SelectionType,
+  LedsContextType,
+  LedsContextDefault,
+  LedsProviderType } from "../types";
 
 export const LedsContext = createContext<LedsContextType>( LedsContextDefault )
-
-type LedsProviderType = {
-  children: React.ReactNode;
-}
 
 export const LedsProvider = ( { children }: LedsProviderType ) => {
 

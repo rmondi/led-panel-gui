@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, memo } from "react"
 import { LedsContext } from "@/utils/context/Leds"
 
 type LedType = {
@@ -8,25 +8,27 @@ type LedType = {
   index: number;
 }
 
-const Led = ( { color, index }: LedType ) => {
+const Led = memo( ( { color, index }: LedType ) => {
 
   const { selection, setSelection } = useContext( LedsContext )
   const [ isSelected, setIsSelected ] = useState( false )
 
   useEffect( () => {
-    console.log(isSelected)
-    !selection.length && setIsSelected( false )
+    const ledsSelection: number[] = selection
+    ledsSelection.indexOf( index ) !== -1 && setIsSelected( true )
   }, [ selection ] )
 
   const handleClick = () => {
-    let newSelection = selection
+    let newSelection: number[] = selection
     
-    const indexPos = newSelection.indexOf( index as never )
+    const indexPos = newSelection.indexOf( index )
     
-    if ( indexPos === -1 ) newSelection.push( index as never )
+    /** If led is not already selected, add it to selection */
+    if ( indexPos === -1 ) newSelection.push( index )
+    /** Else remove it from selection */
     else newSelection.splice( indexPos, 1 )
     
-    setSelection( [ ...newSelection ] )
+    setSelection( newSelection )
     setIsSelected( !isSelected )
   }
   
@@ -42,6 +44,6 @@ const Led = ( { color, index }: LedType ) => {
       ></div>
     </div>
   )
-}
+} )
 
 export default Led
