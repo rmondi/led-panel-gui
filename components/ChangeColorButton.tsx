@@ -29,11 +29,11 @@ const ChangeColorButton = ( { color }: ChangeColorButtonType ) => {
   
   return (
     <button
-      className="inline-flex items-center h-12 px-6 rounded text-white font-semibold"
+      className="inline-flex flex-grow justify-center items-center h-12 px-6 rounded text-white font-semibold"
       style={
         {
           backgroundColor: `rgb(${ defaultBgColor })`,
-          textShadow: "0px 0px 4px black" 
+          //textShadow: "0px 0px 4px black"
         }
       }
       onClick={ handleClick }

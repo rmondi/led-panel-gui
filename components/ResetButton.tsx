@@ -11,7 +11,7 @@ const ResetButton = () => {
   
   return (
     <button
-      className="inline-flex items-center mt-4 h-12 px-6 rounded bg-gray-400 text-white font-semibold"
+      className="inline-flex items-center h-12 px-6 rounded bg-gray-400 text-white font-semibold"
       onClick={ handleClick }
     >
       Effacer tout
