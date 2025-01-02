@@ -14,8 +14,13 @@ const ChangeColorButton = ( { color }: ChangeColorButtonType ) => {
 
   const { leds, setLeds, selection, setSelection } = useContext( LedsContext )
 
+  const defaultBgColor =
+    `${ color.r },${ color.g },${ color.b }` === "255,255,255"
+    ? "194, 65, 12"
+    : `${ color.r }, ${ color.g }, ${ color.b }`
+
   const handleClick = () => {
-      if (selection.length) {
+      if ( selection.length ) {
         selection.forEach( led => leds[ led ] = `${color.r},${color.g},${color.b}` )
         setLeds( leds )
         setSelection( [] )
@@ -24,10 +29,16 @@ const ChangeColorButton = ( { color }: ChangeColorButtonType ) => {
   
   return (
     <button
-      className="inline-flex items-center h-12 px-6 rounded bg-orange-700 text-white font-semibold"
+      className="inline-flex items-center h-12 px-6 rounded text-white font-semibold"
+      style={
+        {
+          backgroundColor: `rgb(${ defaultBgColor })`,
+          textShadow: "0px 0px 4px black" 
+        }
+      }
       onClick={ handleClick }
     >
-      Changer la couleur
+      Appliquer la couleur
     </button>
   )
 }
