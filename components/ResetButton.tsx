@@ -7,7 +7,22 @@ const ResetButton = () => {
 
   const { reset } = useContext( LedsContext )
 
-  const handleClick = () => reset()
+  const handleClick = () => {
+    reset()
+
+    const url = `${process.env.REACT_APP_SERVER_URL}/clear`
+    
+    const headers = new Headers()
+    headers.append("Content-Type", "application/json")
+
+    fetch(url, {
+      method: "GET",
+      headers: headers
+    })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.error(error.message))
+  }
   
   return (
     <button
